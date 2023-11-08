@@ -16,6 +16,7 @@ class CartTile extends StatefulWidget {
 }
 
 class _CartTileState extends State<CartTile> {
+  bool selected = false;
   int amount = 1;
 
   void increaseAmount() async {
@@ -81,6 +82,14 @@ class _CartTileState extends State<CartTile> {
                     Container(
                       child: Row(
                         children: [
+                          Checkbox(
+                            value: selected, 
+                            onChanged: (value) {
+                              setState(() {
+                                selected = value!;
+                              });
+                            }
+                          ),
                           Container(
                             width: 100,
                             height: 100,

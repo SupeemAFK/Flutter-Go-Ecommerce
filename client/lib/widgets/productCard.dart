@@ -41,31 +41,27 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 15, top: 10),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      product.name,
+                      product.name.length > 50 ? product.name.substring(0, 50) : product.name,
                       style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18
+                        fontSize: 16
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('${product.price.toString()} THB'),
-                        TextButton(
-                          onPressed:() => userProvider.addtoCurrentUserCart(product.id, 1), 
-                          child: Icon(
-                            Icons.shopping_cart,
-                            color: Color.fromARGB(255, 29, 29, 29),
-                            size: 18,
-                          ),
-                        )
-                      ],
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Text(
+                        '${product.price.toString()} THB',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     )
                   ],
               ),

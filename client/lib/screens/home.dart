@@ -57,8 +57,11 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Container(
-          child: SearchBar(
-            leading: const Icon(Icons.search)
+          child: Container(
+            height: 35,
+            child: SearchBar(
+              leading: const Icon(Icons.search)
+            ),
           ),
         ),
         actions: [

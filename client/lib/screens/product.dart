@@ -60,8 +60,11 @@ class _ProductState extends State<ProductPage> {
           icon: Icon(Icons.arrow_back)
         ),
         title: Container(
-          child: SearchBar(
-            leading: const Icon(Icons.search)
+          child: Container(
+            height: 35,
+            child: SearchBar(
+              leading: const Icon(Icons.search)
+            ),
           ),
         ),
         actions: [
@@ -116,7 +119,8 @@ class _ProductState extends State<ProductPage> {
         child: Column(
           children: [
             Container(
-              child: product?.files != null ? CarouselSlider(
+              child: product?.files != null ? 
+              product!.files.length > 1 ? CarouselSlider(
                 options: CarouselOptions(
                   height: 400.0,
                   autoPlay: true,
@@ -142,7 +146,22 @@ class _ProductState extends State<ProductPage> {
                     },
                   );
                 }).toList(),
-              ) : null,
+              ) : Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 400,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0)
+                        ),
+                        image: DecorationImage(
+                          image: NetworkImage(product!.files.first.url),
+                          fit: BoxFit.fitHeight
+                        ),
+                      ),
+                    )
+                  ) : null,
             ),
             Container(
               color: Colors.white,

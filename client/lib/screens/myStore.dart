@@ -119,6 +119,7 @@ class _MyStoreState extends State<MyStore> {
                 return InkWell(
                   onTap:() => context.push('/product/${store!.products![index].id}'),
                   child: Container(
+                    width: MediaQuery.of(context).size.width*0.8,
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.only(top: 10),
@@ -126,39 +127,47 @@ class _MyStoreState extends State<MyStore> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 120,
-                                height: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(0),
-                                    topRight: Radius.circular(0)
-                                  ),
-                                  image: DecorationImage(
-                                    image: NetworkImage(store!.products![index].files.first.url),
-                                    fit: BoxFit.fitHeight
+                          child: SizedBox(
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 120,
+                                  height: 120,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(0),
+                                      topRight: Radius.circular(0)
+                                    ),
+                                    image: DecorationImage(
+                                      image: NetworkImage(store!.products![index].files.first.url),
+                                      fit: BoxFit.fitHeight
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    store!.products![index].name,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold
-                                    ),  
+                                Container(
+                                  width: 200,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        store!.products![index].name.length > 50 ? store!.products![index].name.substring(0, 50) : store!.products![index].name,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),  
+                                      ),
+                                      Text(
+                                        '${store!.products![index].price.toString()} THB',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold
+                                        ), 
+                                      )
+                                    ],
                                   ),
-                                  Text(
-                                    '${store!.products![index].price.toString()} THB' 
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                                )
+                              ],
+                            ),
+                          )
                         ),
                         PopupMenuButton(
                           itemBuilder: (context) => <PopupMenuEntry>[

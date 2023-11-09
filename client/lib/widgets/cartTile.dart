@@ -105,7 +105,10 @@ class _CartTileState extends State<CartTile> {
                             padding: EdgeInsets.all(10),
                             child: Column(
                               children: [
-                                Text(widget.cart.product!.name),
+                                Container(
+                                  width: 120,
+                                  child: Text(widget.cart.product!.name.length  > 50 ? widget.cart.product!.name.substring(0, 50) : widget.cart.product!.name)
+                                ),
                                 Row(
                                   children: [
                                     IconButton(

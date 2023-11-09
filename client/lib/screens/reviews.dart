@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:client/model/productModel.dart';
+import 'package:client/provider/userProvider.dart';
 import 'package:client/widgets/reviewTile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -47,6 +49,8 @@ class _ReviewsState extends State<Reviews> {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = context.watch<UserProvider>();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -60,9 +64,11 @@ class _ReviewsState extends State<Reviews> {
         ),
         title: const Text("Reviews"),
         actions: [
-          OutlinedButton(
-            onPressed: () => context.push('/addReview/${widget.id}'), 
-            child: const Text("Write review")
+          Container(
+            child: userProvider.currentUser?.id != product?.user?.id ? OutlinedButton(
+              onPressed: () => context.push('/addReview/${widget.id}'), 
+              child: const Text("Write review")
+            ) : null,
           )
         ],
       ),

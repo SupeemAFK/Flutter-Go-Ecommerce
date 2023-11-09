@@ -58,7 +58,7 @@ class _AddReviewState extends State<AddReview> {
               .then((value) => context.pop());
           },
         ),
-        title: const Text('Add product'),
+        title: const Text('Add review'),
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(8.0),

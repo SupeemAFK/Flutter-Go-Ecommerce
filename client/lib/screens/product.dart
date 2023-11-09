@@ -130,18 +130,7 @@ class _ProductState extends State<ProductPage> {
                     builder: (BuildContext context) {
                       return Container(
                         width: MediaQuery.of(context).size.width,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0)
-                            ),
-                            image: DecorationImage(
-                              image: NetworkImage(file.url),
-                              fit: BoxFit.fitHeight
-                            ),
-                          ),
-                        )
+                        child: Image.network(file.url, width: MediaQuery.of(context).size.width)
                       );
                     },
                   );

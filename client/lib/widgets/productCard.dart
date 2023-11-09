@@ -37,7 +37,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   image: DecorationImage(
                     image: NetworkImage(product.files.first.url),
-                    fit: BoxFit.fitHeight
+                    fit: BoxFit.cover
                   ),
                 ),
               ),
